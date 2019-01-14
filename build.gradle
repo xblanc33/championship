@@ -1,0 +1,31 @@
+apply plugin: 'java'
+
+group = 'championship'
+version = '1.0-SNAPSHOT'
+
+description = """DDD Example"""
+
+sourceCompatibility = 1.8
+targetCompatibility = 1.8
+
+repositories {
+    jcenter()
+    mavenCentral()
+}
+
+dependencies {
+  testCompile 'junit:junit:4.12'
+}
+
+apply plugin: 'checkstyle'
+checkstyle {
+    toolVersion "7.6.1"
+}
+
+apply plugin: 'findbugs'
+tasks.withType(FindBugs) {
+    reports {
+        xml.enabled false
+        html.enabled true
+    }
+}
