@@ -28,12 +28,32 @@ public class Championship {
         playerSet.add(player);
     }
 
+    public Player[] getPlayer() {
+        return playerSet.toArray(new Player[playerSet.size()]);
+    }
+
+    public boolean isClosed() {
+        if (!isStarted && matchSet.size() == 0) {
+            return false;
+        }
+        for (Match match : matchSet) {
+            if (!match.isClosed()) {
+                return false;
+            }
+        }
+        return true;
+    }
+
     public void start() {
         if (isStarted) {
             throw new ChampionshipException("Championship started");
         }
-        this.isStarted = true;
+        isStarted = true;
         makeAllMatch();
+    }
+
+    public boolean isStarted() {
+        return isStarted;
     }
 
     public void startMatch(Player player1, Player player2) {
@@ -114,14 +134,5 @@ public class Championship {
             }
         }
         throw new ChampionshipException("no such match");
-    }
-
-    private boolean isClosed() {
-        for (Match match : matchSet) {
-            if (!match.isClosed()) {
-                return false;
-            }
-        }
-        return true;
     }
 }

@@ -27,6 +27,9 @@ public class Match {
     }
 
     public void start() {
+        if (isStarted || isClosed) {
+            throw new ChampionshipException("already started or closed");
+        }
         isStarted = true;
     }
 
