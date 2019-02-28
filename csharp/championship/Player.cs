@@ -4,18 +4,21 @@ namespace championship
 {
     public class Player
     {
-        private string _nickname;
+        private readonly string _nickname;
 
         public Player(string nickname)
         {
             if (nickname == null)
-                throw new ArgumentNullException ("url");
+            {
+                throw new ArgumentNullException ("nickname");
+            }
             _nickname = nickname;
         }
 
         public string NickName 
         {
-            get {
+            get 
+            {
                 return _nickname;
             }
         }
@@ -28,16 +31,6 @@ namespace championship
         public override int GetHashCode() 
         {
             return _nickname.GetHashCode();
-        }
-
-        public static bool operator ==(Player x, Player y) 
-        {
-            return x._nickname == y._nickname;
-        }
-
-        public static bool operator !=(Player x, Player y) 
-        {
-            return !(x == y);
         }
     }
 }
