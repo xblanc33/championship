@@ -1,12 +1,13 @@
-﻿using System;
+using System;
 
 namespace championship
 {
-    class Program
+    public class Program
     {
         static void Main(string[] args)
         {
-            Console.WriteLine("Hello World!");
+            Player p = new Player("bob");
+            System.Console.WriteLine("player created");
         }
     }
 }
