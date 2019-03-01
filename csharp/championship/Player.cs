@@ -25,7 +25,7 @@ namespace championship
 
         public override bool Equals(Object obj) 
         {
-            return obj is Player && this == (Player)obj;
+            return obj is Player && this._nickname == ((Player)obj)._nickname;
         }
 
         public override int GetHashCode() 
